@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/master}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage/index.css}" />
+    <title>Product Management System - Existing Vehicle List</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <div>
+            <span style="font-size: 1.5em">Vehicle List</span>
+            <span style="float:right;">
+                <a class="btn btn-primary" href="/vehicle/new">Add New Vehicle</a>
+            </span>
+        </div>
+        <p>&nbsp;</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Vehicle VIN Number</th>
+                    <th scope="col">Brand Name</th>
+                    <th scope="col">Manufacturer</th>
+                    <th scope="col">Retail Price</th>
+                    <th scope="col">MF Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vehicle, iterStat : ${vehicles}" th:onclick="@{document.location='/vehicle/edit/{vId}'(vId=${vehicle.vehicleId})}">
+                    <th scope="row" th:text="${iterStat.count}"></th>
+                    <td th:text="${vehicle.vehicleVINNumber}"></td>
+                    <td th:text="${vehicle.brandName}"></td>
+                    <td th:text="${vehicle.manufacturer.name}"></td>
+                    <td th:text="${vehicle.retailPrice}"></td>
+                    <td th:text="${vehicle.dateMfd}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+    
+</body>
+</html>

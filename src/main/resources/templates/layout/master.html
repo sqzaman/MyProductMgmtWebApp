@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="">
+<meta name="author" content="Syed Quamruzzaman">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css"	th:href="@{/css/vendor/bootstrap/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"	th:href="@{/css/heroic-features.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}" />
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Start Bootstrap</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"><a class="nav-link" href="/">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/products' ? 'active':''}"><a class="nav-link" href="/products">Products</a>
+					</li>
+
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/manufacturers' ? 'active':''}"><a class="nav-link" href="/manufacturers">Manufacturer</a>
+					</li>
+					
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/vehicles' ? 'active':''}"><a class="nav-link" href="/vehicles">Vehicle</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<div class="container">
+		<!--Thymeleaf placeholder for the page Content-->
+		<th:block layout:fragment="content"></th:block>
+		<!--End placeholder-->
+	</div>
+
+	<!--Thymeleaf placeholder for additional footer content-->
+	<th:block layout:fragment="footer"></th:block>
+	<!--End placeholder-->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your
+				Website 2018</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+
+	<script type="text/javascript" th:src="@{/js/vendor/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/vendor/bootstrap/bootstrap.bundle.min.js}"></script>
+	
+	      <!--
+<script type="text/javascript" th:src="@{/js/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/vendor/popper/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/vendor/bootstrap/bootstrap.min.js}"></script>
+  -->
+</body>
+</html>

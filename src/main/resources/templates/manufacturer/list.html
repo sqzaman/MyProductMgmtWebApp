@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/master}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage/index.css}" />
+    <title>Product Management System - Existing Manufacturer List</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <div>
+            <span style="font-size: 1.5em">Manufacturer List</span>
+            <span style="float:right;">
+                <a class="btn btn-primary" href="/manufacturer/new">Add New Manufacturer</a>
+            </span>
+        </div>
+        <p>&nbsp;</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Plant Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="manufacturer, iterStat : ${manufacturers}" th:onclick="@{document.location='/manufacturer/edit/{mId}'(mId=${manufacturer.manufacturerId})}">
+                    <th scope="row" th:text="${iterStat.count}"></th>
+                    <td th:text="${manufacturer.name}"></td>
+                    <td th:text="${manufacturer.plantAddress}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{layout/master}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage/index.css}" />
+    <title>Product Management System - New Product</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <form id="productRegForm" method="post" action="/product/new" th:object="${product}">
+            <fieldset>
+                <legend>New Product</legend>
+                <input type="hidden" name="pid" th:value="${product.pid}" />
+                <div class="form-group">
+                    <label for="productNumber">Product Number</label>
+                    <span th:if="${#fields.hasErrors('productNumber')}" th:errors="*{productNumber}"
+									class="alert alert-danger"></span>
+                    <input id="productNumber" name="productNumber" type="text" class="form-control" th:value="${product.productNumber}">
+                </div>
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="alert alert-danger"></span>
+                    <input id="name" name="name" type="text" class="form-control" th:value="${product.name}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+									class="alert alert-danger"></span>
+                    <textarea id="description" name="description"  class="form-control" th:field="${product.description}">${product.description}</textarea>
+                </div>              
+                <div class="form-group">
+                    <label for="unitPrice">Unit Price</label>
+                    <span th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}"
+									class="alert alert-danger"></span>
+                    <input id="unitPrice" name="unitPrice" type="text" class="form-control" th:value="${product.unitPrice}">
+                </div>
+                <div class="form-group">
+                    <label for="dateMfd">Manufacturing Date</label>
+                    <span th:if="${#fields.hasErrors('dateMfd')}" th:errors="*{dateMfd}"
+									class="alert alert-danger"></span>
+                    <input id="dateMfd" name="dateMfd" type="date" class="form-control" th:field="${product.dateMfd}">
+                </div>
+                <div style="float:right;padding: 20px 0px 40px 0px;">
+                    <a href="/products" class="btn btn-outline-warning" style="width: 150px;">Cancel</a>&nbsp;&nbsp;&nbsp;            
+                    <button id="btnSubmit" type="submit" class="btn btn-primary"  style="width: 150px;">Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+    
+</body>
+</html>
